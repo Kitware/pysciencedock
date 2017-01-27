@@ -4,7 +4,7 @@ import pandas as pd
 from ..describe import describe, Description
 
 @describe(
-    Description('Fold change', 'Perform a fold change analysis.', dockerImage='analytics_tasks')
+    Description('Fold change', 'Perform a fold change analysis.', dockerImage='kitware/pysciencedock')
         .input('data', 'The input data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
         .input('threshold', 'Fold change threshold', type='number', min=0, default=2, required=False)
         .output('output', 'The fold change table', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))

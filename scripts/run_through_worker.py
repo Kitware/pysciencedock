@@ -1,6 +1,6 @@
 import celery
 import json
-import analytics_tasks.metabolomics as mb
+import pysciencedock.metabolomics as mb
 
 
 celeryapp = celery.Celery(

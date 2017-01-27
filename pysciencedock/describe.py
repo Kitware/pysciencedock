@@ -9,7 +9,7 @@ class Description(object):
     """
     This class provides convenient chainable semantics to allow
     functions to describe themselves for use with girder_worker. A
-    function can apply the :py:class:`analytics_tasks.describe.describe`
+    function can apply the :py:class:`pysciencedock.describe.describe`
     decorator to itself (called with an instance of this class) in order to
     describe itself.
     """

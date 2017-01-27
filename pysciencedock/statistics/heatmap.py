@@ -4,7 +4,7 @@ from hierarchy import hierarchy
 from ..describe import describe, Description
 
 @describe(
-    Description('Heatmap', 'Compute data for a heatmap with optional hierarchical linkage.', dockerImage='analytics_tasks')
+    Description('Heatmap', 'Compute data for a heatmap with optional hierarchical linkage.', dockerImage='kitware/pysciencedock')
         .input('data', 'The data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
         .input('method', 'The linkage method', type='enum', values=['single', 'complete', 'average', 'weighted', 'centroid', 'median', 'ward'], default='single', required=False)
         .input('metric', 'The distance metric', type='enum', values=['euclidean', 'correlation'], default='euclidean', required=False)

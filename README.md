@@ -21,21 +21,14 @@ python -m pysciencedock <method> <arg1> ...
 
 ## Usage through Docker
 
-Build the Docker image:
-```
-git clone ...
-cd pysciencedock
-docker build -t pysciencedock .
-```
-
 List the methods available through Docker:
 ```
-docker run pysciencedock
+docker run kitware/pysciencedock
 ```
 
 Run a method through Docker:
 ```
-docker run <docker_options> pysciencedock <method> <arg1> ...
+docker run <docker_options> kitware/pysciencedock <method> <arg1> ...
 ```
 
 In order to send data files to Docker, mount a volume and use the mounted
@@ -43,8 +36,18 @@ volume prefix for the input and output paths. For example, if `myinput.csv`
 is in your current directory, the following will produce `myoutput.csv` in
 the current directory:
 ```
-docker run -v $PWD:/mnt/data pysciencedock normalize --data=/mnt/data/myinput.csv --output=/mnt/data/myoutput.csv
+docker run -v $PWD:/data kitware/pysciencedock normalize --data=/data/myinput.csv --output=/data/myoutput.csv
 ```
+
+Build the Docker image:
+```
+git clone https://github.com/Kitware/pysciencedock.git
+cd pysciencedock
+docker build -t pysciencedock .
+```
+
+Now use `pysciencedock` instead of `kitware/pysciencedock` in the commands
+above to use your local version.
 
 ## Usage through Girder
 

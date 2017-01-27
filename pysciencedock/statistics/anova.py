@@ -5,7 +5,7 @@ from scipy.stats import f_oneway
 from ..describe import describe, Description
 
 @describe(
-    Description('ANOVA', 'Performs a one-way analysis of variance test on a data table.', dockerImage='analytics_tasks')
+    Description('ANOVA', 'Performs a one-way analysis of variance test on a data table.', dockerImage='kitware/pysciencedock')
         .input('data', 'The data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
         .output('pvalues', 'The p-values for each column', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))
 )

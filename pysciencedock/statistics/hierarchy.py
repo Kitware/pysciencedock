@@ -4,7 +4,7 @@ from scipy.cluster.hierarchy import linkage
 from ..describe import describe, Description
 
 @describe(
-    Description('Hierarchical linkage', 'Compute a hierarchical linkage of the rows or columns of a data table.', dockerImage='analytics_tasks')
+    Description('Hierarchical linkage', 'Compute a hierarchical linkage of the rows or columns of a data table.', dockerImage='kitware/pysciencedock')
         .input('data', 'The data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
         .input('axis', 'Observations are stored in', type='enum', values=['rows', 'columns'], default='rows', required=False)
         .input('method', 'The linkage method', type='enum', values=['single', 'complete', 'average', 'weighted', 'centroid', 'median', 'ward'], default='single', required=False)

@@ -4,7 +4,7 @@ import pandas as pd
 from ..describe import describe, Description
 
 @describe(
-    Description('Normalize', 'Performs normalization of a metabolomics data table.', dockerImage='analytics_tasks')
+    Description('Normalize', 'Performs normalization of a metabolomics data table.', dockerImage='kitware/pysciencedock')
         .input('data', 'The study data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
         .input('normalization', 'Sample normalization', type='string-enumeration', values=['none', 'sum', 'median'], required=False, default='none')
         .input('transformation', 'Transformation', type='string-enumeration', values=['none', 'log', 'square root', 'cube root'], required=False, default='none')
