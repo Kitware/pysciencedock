@@ -3,6 +3,7 @@ from correlation import correlation
 from foldchange import foldchange
 from heatmap import heatmap
 from hierarchy import hierarchy
+from kmeans import kmeans
 from pca import pca
 from plsda import plsda
 from ttest import ttest
