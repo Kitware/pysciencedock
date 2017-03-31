@@ -3,10 +3,11 @@ import pandas as pd
 from scipy.stats import ttest_ind
 
 from ..describe import describe, Description
+from ..io import readCsv
 
 @describe(
     Description('Volcano', 'Computes data for a volcano plot from a data table.', dockerImage='kitware/pysciencedock')
-        .input('data', 'The data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
+        .input('data', 'The data table', type='file', deserialize=readCsv)
         .output('volcano', 'The fold change and p-values for each column', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))
 )
 def volcano(data):

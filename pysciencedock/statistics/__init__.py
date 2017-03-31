@@ -1,5 +1,6 @@
 from anova import anova
 from correlation import correlation
+from corrheatmap import corrheatmap
 from foldchange import foldchange
 from heatmap import heatmap
 from hierarchy import hierarchy
