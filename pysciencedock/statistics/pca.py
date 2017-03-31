@@ -3,10 +3,11 @@ import pandas as pd
 from sklearn.decomposition import PCA
 
 from ..describe import describe, Description
+from ..io import readCsv
 
 @describe(
     Description('PCA', 'Performs principal component analysis of a data table.', dockerImage='kitware/pysciencedock')
-        .input('data', 'The data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
+        .input('data', 'The data table', type='file', deserialize=readCsv)
         .input('num_components', 'The number of components', type='number', min=1, step=1, default=5, required=False)
         .output('explained', 'The explained variance for each component', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))
         .output('components', 'The component vectors', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))

@@ -2,10 +2,11 @@ import pandas as pd
 from sklearn.cluster import KMeans
 
 from ..describe import describe, Description
+from ..io import readCsv
 
 @describe(
     Description('K means', 'Performs K means on a data table.', dockerImage='kitware/pysciencedock')
-        .input('data', 'The data table', type='file', deserialize=lambda fileName: pd.read_csv(fileName, index_col=(0, 1)))
+        .input('data', 'The data table', type='file', deserialize=readCsv)
         .input('num_clusters', 'The number of clusters', type='number', min=1, step=1, default=3, required=False)
         .output('clusters', 'The data with an additional column named "cluster"', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))
         .output('cluster_centers', 'The cluster center of each cluster', type='new-file', serialize=lambda df, fileName: df.to_csv(fileName))

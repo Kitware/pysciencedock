@@ -3,11 +3,13 @@ from itertools import chain
 import json
 import metabolomics
 import statistics
+import transform
 import sys
 
 modules = [
     metabolomics,
-    statistics
+    statistics,
+    transform
 ]
 
 tasks = list(chain.from_iterable([getmembers(module, isfunction) for module in modules]))
