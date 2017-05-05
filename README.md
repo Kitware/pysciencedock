@@ -60,3 +60,11 @@ above to use your local version.
 * When that task completes, navigate to a created task item and select
   "Run task" from the actions menu.
 * Fill in the task parameters and click Run.
+
+## Testing
+
+To run the unit tests:
+
+```
+python -m unittest tests
+```
