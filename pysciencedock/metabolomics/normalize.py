@@ -15,9 +15,9 @@ def normalize(data, normalization, scaling, transformation):
     output = data
 
     if normalization == 'sum':
-        output = output.div(output.sum(axis=1), axis=0)
+        output = output / output.sum()
     elif normalization == 'median':
-        output = output.div(output.median(axis=1), axis=0)
+        output = output / output.median()
 
     if transformation == 'log':
         output = np.log10(output)
@@ -27,13 +27,13 @@ def normalize(data, normalization, scaling, transformation):
         output = np.power(output, 1.0/3.0)
 
     if scaling in ('mean', 'auto', 'pareto', 'range'):
-        output = output.sub(output.mean(axis=0), axis=1)
+        output = output - output.mean()
 
     if scaling == 'auto':
-        output = output.div(output.std(axis=0), axis=1)
+        output = output / output.std()
     elif scaling == 'pareto':
-        output = output.div(np.sqrt(output.std(axis=0)), axis=1)
+        output = output / np.sqrt(output.std())
     elif scaling == 'range':
-        output = output.div(output.max(axis=0).sub(output.min(axis=0)), axis=1)
+        output = output / (output.max() - output.min())
 
     return output
