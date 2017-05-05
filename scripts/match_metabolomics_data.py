@@ -48,7 +48,7 @@ def fill_missing_values(dataset):
   df.to_csv(dataset + '_cleaned.csv')
 
   # Normalize too while we're here.
-  df = df.div(df.median(axis=1), axis=0)
+  df = df / df.median()
   df.to_csv(dataset + '_normalized.csv')
 
 
