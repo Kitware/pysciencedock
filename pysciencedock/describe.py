@@ -118,8 +118,7 @@ class Description(object):
             'id': id,
             'name': name,
             'description': description,
-            'type': type,
-            'path': '$output{%s}' % id
+            'type': type
         }
 
         if serialize is not None:
