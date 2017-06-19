@@ -34,7 +34,7 @@ class Description(object):
 
         arguments = [name]
         arguments += ['--%s=$input{%s}' % (x['id'], x['id']) for x in self._inputs]
-        arguments += ['--%s=/mnt/girder_worker/data/%s' % (x['id'], x.get('path', x['id'])) for x in self._outputs]
+        arguments += ['--%s=$output{%s}' % (x['id'], x['id']) for x in self._outputs]
         spec['container_args'] = arguments
 
         spec['docker_image'] = self._dockerImage
